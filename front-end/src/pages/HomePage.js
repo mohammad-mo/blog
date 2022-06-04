@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import Posts from '../components/Posts'
 import Sidebar from '../components/Sidebar'
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Header />
@@ -14,4 +14,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

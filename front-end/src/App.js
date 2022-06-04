@@ -2,13 +2,15 @@
 import Navbar from './components/Navbar'
 
 // Pages
-import Home from './pages/Home'
+import HomePage from './pages/HomePage'
+import PostPage from './pages/PostPage'
 
 const App = () => {
   return (
     <div className='container mx-auto px-2'>
       <Navbar />
-      <Home />
+      {/* <HomePage /> */}
+      <PostPage />
     </div>
   )
 }
