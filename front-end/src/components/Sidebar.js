@@ -1,6 +1,6 @@
 const Sidebar = () => {
   return (
-    <div className='flex flex-col items-center col-span-3 bg-primary p-5 rounded-lg'>
+    <div className='flex flex-col items-center col-span-full sm:col-span-3 order-1 sm:order-none bg-primary p-5 rounded-lg'>
       <div id='sidebar-items' className='flex flex-col items-center my-2'>
         <span className='font-bold'>ABOUT ME</span>
         <div className='my-2 w-10 h-10 rounded-full bg-blue-400'></div>

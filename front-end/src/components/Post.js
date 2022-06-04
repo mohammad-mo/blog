@@ -1,6 +1,6 @@
 const Post = () => {
   return (
-    <div className='bg-primary w-96 p-2 rounded-lg'>
+    <div className='bg-primary p-2 rounded-lg'>
       <img
         src='https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80'
         alt='post'

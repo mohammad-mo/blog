@@ -9,6 +9,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Josefin Sans', ...defaultTheme.fontFamily.sans],
+        sansSerif: ['Varela Round', ...defaultTheme.fontFamily.sans],
         serif: ['Lora', ...defaultTheme.fontFamily.serif],
       },
       backgroundImage: {
@@ -16,6 +17,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         fluid: 'repeat(auto-fit, minmax(4rem, 1fr))',
+        posts: 'repeat(auto-fit, minmax(16rem, 1fr))',
       },
     },
   },
