@@ -34,3 +34,8 @@ input[type='file']::file-selector-button {
   border-radius: 10px;
   border: transparent;
 }
+
+/* Navigation */
+#nav-links > li a.active {
+  color: tomato;
+}

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import {
   FaMicroblog,
@@ -12,38 +12,43 @@ const Navbar = () => {
         <p>Blog</p> <FaMicroblog />
       </div>
       <div className='w-2/3'>
-        <ul className='flex justify-between items-center h-12 px-2 font-light'>
+        <ul
+          id='nav-links'
+          className='flex justify-between items-center h-12 px-2 font-light'
+        >
           <li className='cursor-pointer'>
-            <Link to={{ pathname: '/' }}>
+            <NavLink to={{ pathname: '/' }}>
               HOME
-            </Link>
+            </NavLink>
           </li>
           <li className='cursor-pointer'>
-            <Link to={{ pathname: '/write' }}>
+            <NavLink to={{ pathname: '/write' }}>
               WRITE
-            </Link>
+            </NavLink>
           </li>
           <li className='cursor-pointer'>
-            <Link to={{ pathname: '/contact' }}>
+            <NavLink
+              to={{ pathname: '/contact' }}
+            >
               CONTACT
-            </Link>
+            </NavLink>
           </li>
           <li className='cursor-pointer'>
-            <Link to={{ pathname: '/about' }}>
+            <NavLink to={{ pathname: '/about' }}>
               ABOUT
-            </Link>
+            </NavLink>
           </li>
           <li className='cursor-pointer'>
-            <Link to={{ pathname: '/login' }}>
+            <NavLink to={{ pathname: '/login' }}>
               LOGIN
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
       <div className='flex justify-end items-center space-x-2 w-1/4 h-12'>
-        <Link to={{ pathname: '/profile' }}>
+        <NavLink to={{ pathname: '/profile' }}>
           <div className='bg-blue-400 w-8 h-8 rounded-full'></div>
-        </Link>
+        </NavLink>
         <FaSearch className='cursor-pointer' />
       </div>
     </div>
