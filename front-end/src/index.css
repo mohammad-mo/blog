@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom button in input:file */
+input[type='file']::file-selector-button {
+  cursor: pointer;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.375rem;
+  margin-right: 0.5rem;
+  transition: 1s;
+}
+
+/* Custom scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5)
+    transparent;
+}
+
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(134, 134, 134, 0.5);
+  border-radius: 10px;
+  border: transparent;
+}
