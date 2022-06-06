@@ -1,6 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const { getPosts, createPosts } = require('../controllers/postController')
+const {
+  getPosts,
+  createPosts,
+  getPost,
+  getAllPosts,
+  deletePost,
+  updatePost,
+} = require('../controllers/postController')
 
 const { protect } = require('../middlewares/authMiddleware')
 // const { route } = require('./noteRoutes')
@@ -10,9 +17,11 @@ const { protect } = require('../middlewares/authMiddleware')
 // router.use('/:ticketId/notes', noteRouter)
 
 router.route('/').get(protect, getPosts).post(protect, createPosts)
-// router
-//   .get(protect, getTicket)
-//   .delete(protect, deleteTicket)
-//   .put(protect, updateTicket)
+router.route('/all').get(getAllPosts)
+router
+  .route('/:id')
+  .get(protect, getPost)
+  .delete(protect, deletePost)
+  .put(protect, updatePost)
 
 module.exports = router

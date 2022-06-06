@@ -5,8 +5,8 @@ const Post = require('../models/postModel')
 
 /**
  *
- * @descriptions Get user tickets
- * @route GET /api/tickets
+ * @descriptions Get user Posts
+ * @route GET /api/posts
  * @access Private
  */
 const getPosts = asyncHandler(async (req, res) => {
@@ -25,38 +25,62 @@ const getPosts = asyncHandler(async (req, res) => {
 
 /**
  *
- * @descriptions Get user ticket
- * @route GET /api/tickets/:id
- * @access Private
+ * @descriptions Get all Posts / Get filtered posts
+ * @route GET /api/posts/all
+ * @access Public
  */
-// const getTicket = asyncHandler(async (req, res) => {
-//   // Get user using the id in the JWT
-//   const user = await User.findById(req.user.id);
+const getAllPosts = asyncHandler(async (req, res) => {
+  const categoryName = req.query.category
 
-//   if (!user) {
-//     res.status(401);
-//     throw new Error("User not found");
-//   }
+  let posts
 
-//   const ticket = await Ticket.findById(req.params.id);
+  if (categoryName) {
+    posts = await Post.find({
+      categories: {
+        $in: [categoryName],
+      },
+    })
+  } else {
+    posts = await Post.find()
+  }
 
-//   if (!ticket) {
-//     res.status(404);
-//     throw new Error("Ticket not found");
-//   }
-
-//   if (ticket.user.toString() !== req.user.id) {
-//     res.status(401);
-//     throw new Error("Not authorized");
-//   }
-
-//   res.status(200).json(ticket);
-// });
+  res.status(200).json(posts)
+})
 
 /**
  *
- * @descriptions Create new tickets
- * @route POST /api/tickets/
+ * @descriptions Get user Post
+ * @route GET /api/posts/:id
+ * @access Private
+ */
+const getPost = asyncHandler(async (req, res) => {
+  // Get user using the id in the JWT
+  const user = await User.findById(req.user.id)
+
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+
+  const post = await Post.findById(req.params.id)
+
+  if (!post) {
+    res.status(404)
+    throw new Error('Ticket not found')
+  }
+
+  if (post.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('Not authorized')
+  }
+
+  res.status(200).json(post)
+})
+
+/**
+ *
+ * @descriptions Create new posts
+ * @route POST /api/posts/
  * @access Private
  */
 const createPosts = asyncHandler(async (req, res) => {
@@ -89,73 +113,75 @@ const createPosts = asyncHandler(async (req, res) => {
 
 /**
  *
- * @descriptions Delete ticket
- * @route DELETE /api/tickets/:id
+ * @descriptions Delete post
+ * @route DELETE /api/posts/:id
  * @access Private
  */
-// const deleteTicket = asyncHandler(async (req, res) => {
-//   // Get user using the id in the JWT
-//   const user = await User.findById(req.user.id);
+const deletePost = asyncHandler(async (req, res) => {
+  // Get user using the id in the JWT
+  const user = await User.findById(req.user.id)
 
-//   if (!user) {
-//     res.status(401);
-//     throw new Error("User not found");
-//   }
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
 
-//   const ticket = await Ticket.findById(req.params.id);
+  const post = await Post.findById(req.params.id)
 
-//   if (!ticket) {
-//     res.status(404);
-//     throw new Error("Ticket not found");
-//   }
+  if (!post) {
+    res.status(404)
+    throw new Error('Ticket not found')
+  }
 
-//   if (ticket.user.toString() !== req.user.id) {
-//     res.status(401);
-//     throw new Error("Not authorized");
-//   }
+  if (post.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('Not authorized')
+  }
 
-//   await ticket.remove();
+  await post.remove()
 
-//   res.status(200).json({ success: true });
-// });
+  res.status(200).json({ success: true })
+})
 
 /**
  *
- * @descriptions Update ticket
- * @route PUT /api/tickets/:id
+ * @descriptions Update post
+ * @route PUT /api/posts/:id
  * @access Private
  */
-// const updateTicket = asyncHandler(async (req, res) => {
-//   // Get user using the id in the JWT
-//   const user = await User.findById(req.user.id);
+const updatePost = asyncHandler(async (req, res) => {
+  // Get user using the id in the JWT
+  const user = await User.findById(req.user.id)
 
-//   if (!user) {
-//     res.status(401);
-//     throw new Error("User not found");
-//   }
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
 
-//   const ticket = await Ticket.findById(req.params.id);
+  const post = await Post.findById(req.params.id)
 
-//   if (!ticket) {
-//     res.status(404);
-//     throw new Error("Ticket not found");
-//   }
+  if (!post) {
+    res.status(404)
+    throw new Error('Ticket not found')
+  }
 
-//   if (ticket.user.toString() !== req.user.id) {
-//     res.status(401);
-//     throw new Error("Not authorized");
-//   }
+  if (post.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('Not authorized')
+  }
 
-//   const updatedTicket = await Ticket.findByIdAndUpdate(
-//     req.params.id,
-//     req.body,
-//     { new: true }
-//   );
+  const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
 
-//   res.status(200).json(updatedTicket);
-// });
+  res.status(200).json(updatedPost)
+})
 
 module.exports = {
   getPosts,
+  getPost,
+  getAllPosts,
   createPosts,
+  deletePost,
+  updatePost,
 }
