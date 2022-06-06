@@ -10,10 +10,10 @@ const User = require('../models/userModel')
  * @access Public
  */
 const registerUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body
+  const { name, email, password } = req.body
 
   // Validation
-  if (!username || !email || !password) {
+  if (!name || !email || !password) {
     res.status(400)
     throw new Error('Plsease include all fields')
   }
@@ -34,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // Creat user
   const user = await User.create({
-    username,
+    name,
     email,
     password: hashedPassword,
   })

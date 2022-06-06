@@ -9,32 +9,20 @@ const WritePage = () => {
           alt=''
           className='rounded-md w-full h-[500px] object-cover'
         /> */}
-        <div
-          id='formGroup'
-          className='flex flex-col my-5'
-        >
-          <label
-            htmlFor='titleInput'
-            className='mb-2 text-2xl'
-          >
+        <div id='formGroup' className='flex flex-col my-5'>
+          <label htmlFor='titleInput' className='mb-2 text-2xl'>
             Title
           </label>
           <input
             type='text'
             placeholder='Title'
-            autoFocus='true'
+            autoFocus={true}
             id='titleInput'
             className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
           />
         </div>
-        <div
-          id='formGroup'
-          className='flex flex-col my-5'
-        >
-          <label
-            htmlFor='fileInput'
-            className='mb-2 text-2xl'
-          >
+        <div id='formGroup' className='flex flex-col my-5'>
+          <label htmlFor='fileInput' className='mb-2 text-2xl'>
             Upload Image
           </label>
           <input
@@ -44,14 +32,8 @@ const WritePage = () => {
             accept='image/jpeg, image/png, image/webp'
           />
         </div>
-        <div
-          id='formGroup'
-          className='flex flex-col my-5'
-        >
-          <label
-            htmlFor='description'
-            className='mb-2 text-2xl'
-          >
+        <div id='formGroup' className='flex flex-col my-5'>
+          <label htmlFor='description' className='mb-2 text-2xl'>
             Write your story
           </label>
           <textarea
