@@ -10,24 +10,24 @@ const WritePage = () => {
           className='rounded-md w-full h-[500px] object-cover'
         /> */}
         <div id='formGroup' className='flex flex-col my-5'>
-          <label htmlFor='titleInput' className='mb-2 text-2xl'>
+          <label htmlFor='title' className='mb-2 text-2xl'>
             Title
           </label>
           <input
             type='text'
             placeholder='Title'
             autoFocus={true}
-            id='titleInput'
+            id='title'
             className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
           />
         </div>
         <div id='formGroup' className='flex flex-col my-5'>
-          <label htmlFor='fileInput' className='mb-2 text-2xl'>
+          <label htmlFor='file' className='mb-2 text-2xl'>
             Upload Image
           </label>
           <input
             className='w-full bg-gray-50 rounded-md border border-gray-300 cursor-pointer'
-            id='fileInput'
+            id='file'
             type='file'
             accept='image/jpeg, image/png, image/webp'
           />

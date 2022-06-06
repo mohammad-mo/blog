@@ -5,11 +5,10 @@ const ProfileInfo = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className='col-span-full sm:col-span-9 order-1 sm:order-none'>
+    <div className='col-span-full sm:col-span-9 order-1 sm:order-none bg-primary rounded-md p-5'>
       <div>
-        <div id='title' className='flex justify-between items-center'>
+        <div id='title' className='flex justify-start items-center'>
           <span className='text-2xl'>Update Your account</span>
-          <span className='text-red-500'>Delete Account</span>
         </div>
         <form>
           <div id='formGroup' className='flex flex-col items-center my-10'>
@@ -21,38 +20,36 @@ const ProfileInfo = () => {
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>
-            <label htmlFor='titleInput' className='mb-2 text-2xl'>
-              Username
+            <label htmlFor='name' className='mb-2 text-2xl'>
+              Name
             </label>
             <input
               type='text'
               placeholder='Username'
-              autoFocus='true'
-              id='titleInput'
+              id='name'
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>
-            <label htmlFor='titleInput' className='mb-2 text-2xl'>
+            <label htmlFor='email' className='mb-2 text-2xl'>
               Email
             </label>
             <input
               type='email'
               placeholder='Email'
-              autoFocus='true'
-              id='titleInput'
+              id='email'
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>
-            <label htmlFor='passwordInput' className='mb-2 text-2xl'>
+            <label htmlFor='password' className='mb-2 text-2xl'>
               Password
             </label>
             <div className='relative'>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Password'
-                id='passwordInput'
+                id='password'
                 className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
               />
               {showPassword ? (
