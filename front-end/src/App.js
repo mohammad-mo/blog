@@ -15,6 +15,7 @@ import ProfilePage from './pages/ProfilePage'
 import NotFoundPage from './pages/NotFoundPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import AboutPage from './pages/About'
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
               <Route path='/profile' element={<ProfilePage />} />
             </Route>
             <Route path='/login' element={<LoginPage />} />
+            <Route path='/about' element={<AboutPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/notfound' element={<NotFoundPage />} />
             <Route path='/*' element={<NotFoundPage />} />
