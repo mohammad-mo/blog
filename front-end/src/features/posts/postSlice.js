@@ -58,13 +58,28 @@ export const getAllPosts = createAsyncThunk(
   },
 )
 
+// // Get user post
+// export const getPost = createAsyncThunk(
+//   'tickets/get',
+//   async (postId, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.user.token
+//       return await postService.getPost(postId, token)
+//     } catch (error) {
+//       const message =
+//         error.respones?.data?.message || error.message || error.toString()
+
+//       return thunkAPI.rejectWithValue(message)
+//     }
+//   },
+// )
+
 // Get user post
 export const getPost = createAsyncThunk(
-  'tickets/get',
+  'post/get',
   async (postId, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token
-      return await postService.getPost(postId, token)
+      return await postService.getPost(postId)
     } catch (error) {
       const message =
         error.respones?.data?.message || error.message || error.toString()

@@ -20,7 +20,6 @@ const SinglePost = () => {
   const { post, isLoading, isError, message } = useSelector(
     (state) => state.posts,
   )
-  const { name } = useSelector((state) => state.auth.user)
 
   const dispatch = useDispatch()
 
@@ -66,7 +65,7 @@ const SinglePost = () => {
           className='flex justify-between items-center text-[#666] my-6'
         >
           <span>
-            Author: <strong>{name}</strong>
+            Author: <strong>{post.author}</strong>
           </span>
           <span>
             Date:{' '}

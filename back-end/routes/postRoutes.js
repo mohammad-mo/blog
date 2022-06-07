@@ -20,7 +20,7 @@ router.route('/').get(protect, getPosts).post(protect, createPosts)
 router.route('/all').get(getAllPosts)
 router
   .route('/:id')
-  .get(protect, getPost)
+  .get(getPost)
   .delete(protect, deletePost)
   .put(protect, updatePost)
 
