@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { login, reset } from '../features/auth/authService'
+import { login, reset } from '../features/auth/authSlice'
 
 import { toast } from 'react-toastify'
 
@@ -75,6 +75,7 @@ const LoginPage = () => {
             placeholder='Email'
             id='email'
             name='email'
+            value={email}
             className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
             onChange={onChange}
             required
@@ -90,6 +91,7 @@ const LoginPage = () => {
               placeholder='Password'
               id='password'
               name='password'
+              value={password}
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
               onChange={onChange}
               required

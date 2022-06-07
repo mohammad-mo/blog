@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
 
-const Post = () => {
+const Post = ({ post: { categories, _id, title, createdAt } }) => {
+  const categoriesMap = categories.map((category) => {
+    return category
+  })
+
   return (
     <div className='bg-primary p-2 rounded-lg'>
       <img
@@ -8,18 +12,20 @@ const Post = () => {
         alt='post'
         className='w-full h-64 object-cover rounded-md mb-2'
       />
-      <div className='flex flex-col items-center p-1 my-2'>
+      <div className='flex flex-col p-1 my-2'>
         <div className='flex justify-between items-center w-full font-serif text-sm font-bold mb-2'>
           <span id='category' className='cursor-pointer'>
-            Music
+            {categoriesMap}
           </span>
-          <span id='date'>1 hour ago</span>
+          <span id='date'>
+            {new Date(createdAt).toLocaleDateString('en-US')}
+          </span>
         </div>
         <span id='title' className='text-lg'>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, odio.
+          {title}
         </span>
       </div>
-      <Link to={{ pathname: `/posts/:id` }}>
+      <Link to={{ pathname: `/posts/${_id}` }}>
         <button
           type='button'
           className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-1 focus:ring-gray-200 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 transition-all'

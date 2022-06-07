@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../features/auth/authService'
+import { logout, reset } from '../features/auth/authSlice'
 
 import { FaMicroblog, FaSearch } from 'react-icons/fa'
 

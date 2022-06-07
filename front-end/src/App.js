@@ -20,12 +20,14 @@ const App = () => {
   return (
     <>
       <Router>
-        <div className='container mx-auto px-4'>
+        <div className='container mx-auto px-4 mb-10'>
           <Navbar />
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/posts/:id' element={<PostPage />} />
-            <Route path='/write' element={<WritePage />} />
+            <Route path='/posts/:postId' element={<PostPage />} />
+            <Route path='/write' element={<PrivateRoute />}>
+              <Route path='/write' element={<WritePage />} />
+            </Route>
             <Route path='/profile' element={<PrivateRoute />}>
               <Route path='/profile' element={<ProfilePage />} />
             </Route>

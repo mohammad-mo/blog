@@ -1,36 +1,96 @@
-import axios from 'axios'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const API_URL = '/api/users'
+import authService from './authService'
 
-// Register user
-const register = async (userData) => {
-  const response = await axios.post(API_URL, userData)
+// Get user from localstorage
+const user = JSON.parse(localStorage.getItem('user'))
 
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
+const initialState = {
+  user: user ? user : null,
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: '',
+}
+
+// Register a user
+export const register = createAsyncThunk(
+  'auth/register',
+  async (user, thunkAPI) => {
+    try {
+      return await authService.register(user)
+    } catch (error) {
+      const message =
+        error.response?.data?.message || error.message || error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  },
+)
+
+// Login user
+export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
+  try {
+    return await authService.login(user)
+  } catch (error) {
+    const message =
+      error.response?.data?.message || error.message || error.toString()
+
+    return thunkAPI.rejectWithValue(message)
   }
+})
 
-  return response.data
-}
+// Logout user
+export const logout = createAsyncThunk('auth.logout', async () => {
+  await authService.logout()
+})
 
-// Register user
-const login = async (userData) => {
-  const response = await axios.post(`${API_URL}/login`, userData)
+export const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  reducers: {
+    reset: (state) => {
+      state.isLoading = false
+      state.isError = false
+      state.isSuccess = false
+      state.message = ''
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.user = action.payload
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+        state.user = null
+      })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.user = action.payload
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+        state.user = null
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null
+      })
+  },
+})
 
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
-  }
-
-  return response.data
-}
-
-// Logout
-const logout = () => localStorage.removeItem('user')
-
-const authService = {
-  register,
-  logout,
-  login,
-}
-
-export default authService
+export const { reset } = authSlice.actions
+export default authSlice.reducer
