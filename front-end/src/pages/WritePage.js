@@ -33,6 +33,23 @@ const WritePage = () => {
           />
         </div>
         <div id='formGroup' className='flex flex-col my-5'>
+          <label htmlFor='category' className='mb-2 text-2xl'>
+            Select an category
+          </label>
+          <select
+            id='category'
+            class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+          >
+            <option value='US'>life</option>
+            <option value='CA'>music</option>
+            <option value='FR'>style</option>
+            <option value='DE'>sport</option>
+            <option value='DE'>cinema</option>
+            <option value='DE'>tech</option>
+            <option value='DE'>game</option>
+          </select>
+        </div>
+        <div id='formGroup' className='flex flex-col my-5'>
           <label htmlFor='description' className='mb-2 text-2xl'>
             Write your story
           </label>
