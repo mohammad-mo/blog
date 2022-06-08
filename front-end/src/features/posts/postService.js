@@ -14,6 +14,18 @@ const createPost = async (postData, token) => {
   return response.data
 }
 
+// Create new post
+const deletePost = async (postId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.delete(API_URL + postId, config)
+  return response.data
+}
+
 // Get user posts
 const getPosts = async (token) => {
   const config = {
@@ -25,18 +37,6 @@ const getPosts = async (token) => {
   const response = await axios.get(API_URL, config)
   return response.data
 }
-
-// // Get user post
-// const getPost = async (postId, token) => {
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   }
-
-//   const response = await axios.get(API_URL + postId, config)
-//   return response.data
-// }
 
 // Get user post
 const getPost = async (postId) => {
@@ -50,27 +50,22 @@ const getAllPosts = async () => {
   return response.data
 }
 
-// // Close post
-// const closeTicket = async (ticketId, token) => {
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   };
-
-//   const response = await axios.put(
-//     API_URL + ticketId,
-//     { status: "closed" },
-//     config
-//   );
-//   return response.data;
-// };
+// Get posts by catgeory
+const getPostsByCategory = async (categoryName) => {
+  const params = new URLSearchParams({
+    category: categoryName,
+  })
+  const response = await axios.get(`${API_URL}/all/?${params}`)
+  return response.data
+}
 
 const postService = {
   createPost,
+  deletePost,
   getPosts,
   getPost,
   getAllPosts,
+  getPostsByCategory,
 }
 
 export default postService

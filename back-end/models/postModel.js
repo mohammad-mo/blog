@@ -24,8 +24,9 @@ const PostSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    categories: {
-      type: Array,
+    category: {
+      type: String,
+      enum: ['life', 'music', 'style', 'sport', 'cinema', 'tech', 'game'],
       required: false,
     },
   },

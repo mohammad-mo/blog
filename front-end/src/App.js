@@ -15,7 +15,8 @@ import ProfilePage from './pages/ProfilePage'
 import NotFoundPage from './pages/NotFoundPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import AboutPage from './pages/About'
+import MyPostsPage from './pages/MyPostsPage'
+import AboutPage from './pages/AboutPage'
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/posts/:postId' element={<PostPage />} />
+            <Route path='/my-posts' element={<PrivateRoute />}>
+              <Route path='/my-posts' element={<MyPostsPage />} />
+            </Route>
             <Route path='/write' element={<PrivateRoute />}>
               <Route path='/write' element={<WritePage />} />
             </Route>

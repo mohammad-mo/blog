@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-const Post = ({ post: { categories, _id, title, createdAt } }) => {
-  const categoriesMap = categories.map((category) => {
-    return category
-  })
+const Post = ({ post: { category, _id, title, createdAt } }) => {
+  // const categoriesMap = categories.map((category) => {
+  //   return category
+  // })
 
   return (
     <div className='bg-primary p-2 rounded-lg'>
@@ -15,7 +15,7 @@ const Post = ({ post: { categories, _id, title, createdAt } }) => {
       <div className='flex flex-col p-1 my-2'>
         <div className='flex justify-between items-center w-full font-serif text-sm font-bold mb-2'>
           <span id='category' className='cursor-pointer'>
-            {categoriesMap}
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </span>
           <span id='date'>
             {new Date(createdAt).toLocaleDateString('en-US')}

@@ -1,7 +1,17 @@
 import { useState } from 'react'
+
+// Redux
+import { useSelector } from 'react-redux'
+
+// Icons
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const ProfileInfo = () => {
+  const { user } = useSelector((state) => state.auth)
+
+  const [name] = useState(user.name)
+  const [email] = useState(user.email)
+
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -27,7 +37,9 @@ const ProfileInfo = () => {
               type='text'
               placeholder='Username'
               id='name'
+              value={name}
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
+              disabled
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>
@@ -38,7 +50,9 @@ const ProfileInfo = () => {
               type='email'
               placeholder='Email'
               id='email'
+              value={email}
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
+              disabled
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>

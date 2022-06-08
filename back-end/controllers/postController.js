@@ -30,14 +30,14 @@ const getPosts = asyncHandler(async (req, res) => {
  * @access Public
  */
 const getAllPosts = asyncHandler(async (req, res) => {
-  const categoryName = req.query.category
+  const category = req.query.category
 
   let posts
 
-  if (categoryName) {
+  if (category) {
     posts = await Post.find({
-      categories: {
-        $in: [categoryName],
+      category: {
+        $in: [category],
       },
     })
   } else {
@@ -54,7 +54,7 @@ const getAllPosts = asyncHandler(async (req, res) => {
  * @access Private
  */
 const getPost = asyncHandler(async (req, res) => {
-  // // Get user using the id in the JWT
+  // Get user using the id in the JWT
   // const user = await User.findById(req.user.id)
 
   // if (!user) {
@@ -84,7 +84,7 @@ const getPost = asyncHandler(async (req, res) => {
  * @access Private
  */
 const createPosts = asyncHandler(async (req, res) => {
-  const { title, description, photo, categories, author } = req.body
+  const { title, description, photo, category } = req.body
 
   if (!title || !description) {
     res.status(400)
@@ -103,7 +103,7 @@ const createPosts = asyncHandler(async (req, res) => {
     title,
     description,
     photo,
-    categories,
+    category,
     user: req.user.id,
     author: req.user.name,
     status: 'new',

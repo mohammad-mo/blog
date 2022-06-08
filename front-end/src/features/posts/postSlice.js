@@ -27,6 +27,22 @@ export const createPost = createAsyncThunk(
   },
 )
 
+// Delete post
+export const deletePost = createAsyncThunk(
+  'posts/create',
+  async (postId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await postService.deletePost(postId, token)
+    } catch (error) {
+      const message =
+        error.response?.data?.message || error.message || error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  },
+)
+
 // Get user posts
 export const getPosts = createAsyncThunk(
   'posts/getAll',
@@ -58,21 +74,20 @@ export const getAllPosts = createAsyncThunk(
   },
 )
 
-// // Get user post
-// export const getPost = createAsyncThunk(
-//   'tickets/get',
-//   async (postId, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().auth.user.token
-//       return await postService.getPost(postId, token)
-//     } catch (error) {
-//       const message =
-//         error.respones?.data?.message || error.message || error.toString()
+// Get posts by catgeory
+export const getPostsByCategory = createAsyncThunk(
+  'posts/getPostByCategory',
+  async (categoryName, thunkAPI) => {
+    try {
+      return await postService.getPostsByCategory(categoryName)
+    } catch (error) {
+      const message =
+        error.response?.data?.message || error.message || error.toString()
 
-//       return thunkAPI.rejectWithValue(message)
-//     }
-//   },
-// )
+      return thunkAPI.rejectWithValue(message)
+    }
+  },
+)
 
 // Get user post
 export const getPost = createAsyncThunk(
@@ -88,22 +103,6 @@ export const getPost = createAsyncThunk(
     }
   },
 )
-
-// // Close ticket
-// export const closePost = createAsyncThunk(
-//   'tickets/close',
-//   async (postId, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().auth.user.token
-//       return await postService.closePost(postId, token)
-//     } catch (error) {
-//       const message =
-//         error.respones?.data?.message || error.message || error.toString()
-
-//       return thunkAPI.rejectWithValue(message)
-//     }
-//   },
-// )
 
 export const postSlice = createSlice({
   name: 'post',
@@ -151,6 +150,19 @@ export const postSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      .addCase(getPostsByCategory.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getPostsByCategory.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.publicPosts = action.payload
+      })
+      .addCase(getPostsByCategory.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
       .addCase(getPost.pending, (state) => {
         state.isLoading = true
       })
@@ -164,14 +176,6 @@ export const postSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
-    //   .addCase(closePost.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.tickets.map((ticket) =>
-    //       ticket._id === action.payload._id
-    //         ? (ticket.status = "closed")
-    //         : ticket
-    //     );
-    //   });
   },
 })
 

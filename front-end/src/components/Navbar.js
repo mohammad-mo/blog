@@ -35,7 +35,7 @@ const Navbar = () => {
             <NavLink to={{ pathname: '/write' }}>WRITE</NavLink>
           </li>
           <li className='cursor-pointer'>
-            <NavLink to={{ pathname: '/contact' }}>CONTACT</NavLink>
+            <NavLink to={{ pathname: '/my-posts' }}>MY POSTS</NavLink>
           </li>
           <li className='cursor-pointer'>
             <NavLink to={{ pathname: '/about' }}>ABOUT</NavLink>
