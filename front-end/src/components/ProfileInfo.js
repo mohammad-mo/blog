@@ -15,7 +15,7 @@ const ProfileInfo = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className='col-span-full sm:col-span-9 order-1 sm:order-none bg-primary rounded-md p-5'>
+    <div className='bg-primary rounded-md p-5'>
       <div>
         <div id='title' className='flex justify-start items-center'>
           <span className='text-2xl'>Update Your account</span>

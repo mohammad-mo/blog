@@ -27,7 +27,7 @@ const PostSchema = mongoose.Schema(
     category: {
       type: String,
       enum: ['life', 'music', 'style', 'sport', 'cinema', 'tech', 'game'],
-      required: false,
+      required: true,
     },
   },
   {

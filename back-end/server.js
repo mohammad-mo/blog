@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config()
 const { errorHandler } = require('./middlewares/errorMiddlerware')
 const connectDB = require('./config/db')
 const multer = require('multer')
+const path = require('path')
 const PORT = process.env.PORT || 5000
 
 // Connect to database
@@ -13,6 +14,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use('/images', express.static(path.join(__dirname, '/images')))
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'))
@@ -22,7 +24,7 @@ app.use('/api/category', require('./routes/categoryRoutes'))
 // Storing image
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'back-end/images')
+    cb(null, './back-end/images')
   },
   filename: (req, file, cb) => {
     cb(null, req.body.name)

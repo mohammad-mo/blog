@@ -27,20 +27,20 @@ const App = () => {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/posts/:postId' element={<PostPage />} />
-            <Route path='/my-posts' element={<PrivateRoute />}>
-              <Route path='/my-posts' element={<MyPostsPage />} />
-            </Route>
-            <Route path='/write' element={<PrivateRoute />}>
-              <Route path='/write' element={<WritePage />} />
-            </Route>
-            <Route path='/profile' element={<PrivateRoute />}>
-              <Route path='/profile' element={<ProfilePage />} />
-            </Route>
             <Route path='/login' element={<LoginPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/notfound' element={<NotFoundPage />} />
             <Route path='/*' element={<NotFoundPage />} />
+            <Route path='/write' element={<PrivateRoute />}>
+              <Route path='/write' element={<WritePage />} />
+            </Route>
+            <Route path='/my-posts' element={<PrivateRoute />}>
+              <Route path='/my-posts' element={<MyPostsPage />} />
+            </Route>
+            <Route path='/profile' element={<PrivateRoute />}>
+              <Route path='/profile' element={<ProfilePage />} />
+            </Route>
           </Routes>
         </div>
       </Router>

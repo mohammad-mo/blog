@@ -13,9 +13,9 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 
 import { toast } from 'react-toastify'
 
-import HeroImage from '../assets/hero.jpg'
-
 const SinglePost = () => {
+  const PF = 'http://localhost:5000/images/'
+
   const { postId } = useParams()
   const navigate = useNavigate()
 
@@ -41,54 +41,73 @@ const SinglePost = () => {
   }
 
   if (isLoading) {
-    return <Spinner />
+    return (
+      <div className='grid grid-cols-posts gap-2 col-span-full sm:col-span-9 order-1 sm:order-none'>
+        <Spinner />
+      </div>
+    )
   }
 
   return (
-    <div>
-      <img
-        src={HeroImage}
-        alt='post'
-        className='rounded-md w-full h-[400px] object-cover'
-      />
-      <div className='flex justify-between items-center space-x-4 my-6'>
-        <h1 id='title' className='font-serif font-bold text-3xl'>
-          {post.title}
-        </h1>
-        {post.user === user?._id ? (
-          <div className='flex items-center space-x-2'>
-            <button>
-              <FaEdit className='cursor-pointer' color='#444' size={'1.2rem'} />
-            </button>
-            <button onClick={onDeletePost}>
-              <FaTrash
-                className='cursor-pointer'
-                color='#9c4728'
-                size={'1.1rem'}
-              />
-            </button>
-          </div>
+    <div className='col-span-full sm:col-span-9 order-1 sm:order-none'>
+      <div>
+        {post.photo ? (
+          <img
+            src={PF + post.photo}
+            alt='post'
+            className='rounded-md w-full h-[400px] object-cover'
+          />
         ) : (
-          <></>
+          <img
+            src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
+            alt='post'
+            className='rounded-md w-full h-[400px] object-cover'
+          />
         )}
+
+        <div className='flex justify-between items-center space-x-4 my-6'>
+          <h1 id='title' className='font-serif font-bold text-3xl'>
+            {post.title}
+          </h1>
+          {post.user === user?._id ? (
+            <div className='flex items-center space-x-2'>
+              <button>
+                <FaEdit
+                  className='cursor-pointer'
+                  color='#444'
+                  size={'1.2rem'}
+                />
+              </button>
+              <button onClick={onDeletePost}>
+                <FaTrash
+                  className='cursor-pointer'
+                  color='#9c4728'
+                  size={'1.1rem'}
+                />
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div
+          id='info'
+          className='flex justify-between items-center text-[#666] my-6'
+        >
+          <span>
+            Author: <strong>{post.author}</strong>
+          </span>
+          <span>
+            Date:{' '}
+            <strong>
+              {new Date(post.createdAt).toLocaleDateString('en-US')}
+            </strong>
+          </span>
+        </div>
+        <p id='description' className='text-lg'>
+          {post.description}
+        </p>
       </div>
-      <div
-        id='info'
-        className='flex justify-between items-center text-[#666] my-6'
-      >
-        <span>
-          Author: <strong>{post.author}</strong>
-        </span>
-        <span>
-          Date:{' '}
-          <strong>
-            {new Date(post.createdAt).toLocaleDateString('en-US')}
-          </strong>
-        </span>
-      </div>
-      <p id='description' className='text-lg'>
-        {post.description}
-      </p>
     </div>
   )
 }
