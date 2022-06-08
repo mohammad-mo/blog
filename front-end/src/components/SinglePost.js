@@ -55,7 +55,7 @@ const SinglePost = () => {
         <h1 id='title' className='font-serif font-bold text-3xl'>
           {post.title}
         </h1>
-        {post.user === user._id ? (
+        {post.user === user?._id ? (
           <div className='flex items-center space-x-2'>
             <button>
               <FaEdit className='cursor-pointer' color='#444' size={'1.2rem'} />
