@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 
-const Post = ({ post: { category, _id, title, createdAt, photo } }) => {
+const Post = ({
+  post: { category, _id, title, description, createdAt, photo },
+}) => {
   const PF = 'http://localhost:5000/images/'
+
   return (
-    <div className='bg-primary p-2 rounded-lg'>
+    <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary'>
       {photo ? (
         <img
           src={PF + photo}
@@ -26,14 +29,19 @@ const Post = ({ post: { category, _id, title, createdAt, photo } }) => {
             {new Date(createdAt).toLocaleDateString('en-US')}
           </span>
         </div>
-        <span id='title' className='text-lg'>
+        <h3 id='title' className='text-2xl'>
           {title}
-        </span>
+        </h3>
+        <p
+          className={`leading-5  overflow-hidden relative h-3lines after:content-[""] after:absolute after:bottom-0 after:right-0 after:h-[1.25rem] after:w-3/4 after:from-transparent after:to-primary dark:after:to-slate-800 after:bg-gradient-to-r`}
+        >
+          {description}
+        </p>
       </div>
       <Link to={{ pathname: `/posts/${_id}` }}>
         <button
           type='button'
-          className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-1 focus:ring-gray-200 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 transition-all'
+          className='text-gray-900 bg-gray-100 border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-1 focus:ring-gray-200 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 transition-all'
         >
           Read More
         </button>

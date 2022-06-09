@@ -66,7 +66,7 @@ const SinglePost = () => {
   }
 
   return (
-    <div className='col-span-full sm:col-span-9 order-1 sm:order-none'>
+    <div className='bg-primary border border-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-primary rounded-md p-5'>
       <div>
         {post.photo ? (
           <img
@@ -88,7 +88,7 @@ const SinglePost = () => {
               type='text'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
+              className='p-2 w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white'
             />
           ) : (
             <h1 id='title' className='font-serif font-bold text-3xl'>
@@ -100,14 +100,14 @@ const SinglePost = () => {
               <button onClick={() => setUpdate(!update)}>
                 <FaEdit
                   className='cursor-pointer'
-                  color='#444'
+                  color='dark:primary'
                   size={'1.2rem'}
                 />
               </button>
               <button onClick={onDeletePost}>
                 <FaTrash
                   className='cursor-pointer'
-                  color='#9c4728'
+                  color='tomato'
                   size={'1.1rem'}
                 />
               </button>
@@ -118,7 +118,7 @@ const SinglePost = () => {
         </div>
         <div
           id='info'
-          className='flex justify-between items-center text-[#666] my-6'
+          className='flex justify-between items-center text-gray-500 dark:text-gray-300 my-6'
         >
           <span>
             Author: <strong>{post.author}</strong>
@@ -134,7 +134,7 @@ const SinglePost = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
+            className='p-2 w-full h-32 rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white'
           ></textarea>
         ) : (
           <p id='description' className='text-lg'>

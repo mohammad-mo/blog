@@ -4,6 +4,7 @@
 
 /* Custom button in input:file */
 input[type='file']::file-selector-button {
+  background: #f0f0f0;
   cursor: pointer;
   border: none;
   padding: 0.4rem 0.6rem;

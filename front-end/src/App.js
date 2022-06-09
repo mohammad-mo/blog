@@ -22,7 +22,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <div className='container mx-auto px-4 mb-10'>
+        <div className='container mx-auto px-4 pb-5 min-h-screen'>
           <Navbar />
           <Routes>
             <Route path='/' element={<HomePage />} />

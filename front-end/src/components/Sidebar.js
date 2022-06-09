@@ -18,7 +18,7 @@ const Sidebar = () => {
   ]
 
   return (
-    <div className='flex flex-col items-center col-span-full sm:col-span-3 order-2 sm:order-none bg-primary p-5 rounded-lg'>
+    <div className='bg-primary border border-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-primary flex flex-col items-center col-span-full sm:col-span-3 order-2 sm:order-none p-5 shadow rounded-md'>
       <div
         id='sidebar-items'
         className='flex flex-col items-center w-full my-2'

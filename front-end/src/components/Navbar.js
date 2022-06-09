@@ -4,7 +4,10 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
-import { FaMicroblog, FaSearch } from 'react-icons/fa'
+import { FaMicroblog } from 'react-icons/fa'
+
+// Components
+import Switcher from './Switecher'
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -19,7 +22,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='w-full h-12 sticky top-0 flex items-center bg-white z-30'>
+    <div className='w-full h-12 sticky top-0 flex items-center bg-white dark:bg-primaryBlack dark:text-primary z-30'>
       <div className='flex justify-start items-center space-x-1 w-1/4 h-12 text-xl'>
         <p>Blog</p> <FaMicroblog />
       </div>
@@ -57,7 +60,7 @@ const Navbar = () => {
         <NavLink to={{ pathname: '/profile' }}>
           <div className='bg-blue-400 w-8 h-8 rounded-full'></div>
         </NavLink>
-        <FaSearch className='cursor-pointer' />
+        <Switcher />
       </div>
     </div>
   )
