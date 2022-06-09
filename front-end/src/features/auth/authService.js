@@ -24,6 +24,22 @@ const login = async (userData) => {
   return response.data
 }
 
+// Update user
+const updateUser = async (userId, userData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.put(
+    API_URL + '/login/' + userId,
+    userData,
+    config,
+  )
+  return response.data
+}
+
 // Logout
 const logout = () => localStorage.removeItem('user')
 
@@ -31,6 +47,7 @@ const authService = {
   register,
   logout,
   login,
+  updateUser,
 }
 
 export default authService

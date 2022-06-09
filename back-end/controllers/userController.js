@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 
 /**
  * @descriptions Register a new user
- * @route /api/users
+ * @route POST /api/users
  * @access Public
  */
 const registerUser = asyncHandler(async (req, res) => {
@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
 /**
  *
  * @descriptions Login a user
- * @route /api/users/login
+ * @route POST /api/users/login
  * @access Public
  */
 const loginUser = asyncHandler(async (req, res) => {
@@ -72,6 +72,38 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(401)
     throw new Error('Invalid credentials')
   }
+})
+
+/**
+ *
+ * @descriptions Update user
+ * @route PUT /api/users/:id
+ * @access Private
+ */
+const updateUser = asyncHandler(async (req, res) => {
+  // Get user using the id in the JWT
+  const user = await User.findById(req.user.id)
+
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+
+  if (user.id !== req.user.id) {
+    res.status(401)
+    throw new Error('Not authorized')
+  }
+
+  if (req.body.password) {
+    const salt = await bcrypt.genSalt(10)
+    req.body.password = await bcrypt.hash(req.body.password, salt)
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
+
+  res.status(200).json(updatedUser)
 })
 
 /**
@@ -99,5 +131,6 @@ const generateToken = (id) => {
 module.exports = {
   registerUser,
   loginUser,
+  updateUser,
   getMe,
 }

@@ -1,18 +1,45 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateUser } from '../features/auth/authSlice'
 
 // Icons
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
+import { toast } from 'react-toastify'
+
 const ProfileInfo = () => {
   const { user } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
-  const [name] = useState(user.name)
-  const [email] = useState(user.email)
-
+  const [name, setName] = useState(user.name || '')
+  const [email, setEmail] = useState(user.email || '')
+  const [password, setPassword] = useState(user.password || '')
   const [showPassword, setShowPassword] = useState(false)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setName(user.name)
+    setEmail(user.email)
+    setPassword('')
+  }, [user.name, user.email])
+
+  const onUpdateUser = (e) => {
+    e.preventDefault()
+    if (user.name !== name || user.email !== email || password.length > 8) {
+      dispatch(updateUser({ name, email, password }))
+      toast.success(
+        'Your information updated, to see the changes please logout/login',
+      )
+      navigate('/')
+    } else if (password.length < 8) {
+      toast.error('Password length should be greater than 8')
+    }
+    // setUpdate(false)
+  }
 
   return (
     <div className='bg-primary rounded-md p-5'>
@@ -38,8 +65,8 @@ const ProfileInfo = () => {
               placeholder='Username'
               id='name'
               value={name}
+              onChange={(e) => setName(e.target.value)}
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
-              disabled
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>
@@ -51,8 +78,8 @@ const ProfileInfo = () => {
               placeholder='Email'
               id='email'
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
-              disabled
             />
           </div>
           <div id='formGroup' className='flex flex-col my-5'>
@@ -64,6 +91,8 @@ const ProfileInfo = () => {
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Password'
                 id='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
               />
               {showPassword ? (
@@ -82,10 +111,11 @@ const ProfileInfo = () => {
             </div>
           </div>
           <button
-            type='button'
+            type='submit'
+            onClick={onUpdateUser}
             className='w-full text-gray-900 focus:outline-none bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition-all px-5 py-2.5'
           >
-            Submit
+            Update
           </button>
         </form>
       </div>

@@ -14,7 +14,7 @@ const createPost = async (postData, token) => {
   return response.data
 }
 
-// Create new post
+// Delete post
 const deletePost = async (postId, token) => {
   const config = {
     headers: {
@@ -23,6 +23,18 @@ const deletePost = async (postId, token) => {
   }
 
   const response = await axios.delete(API_URL + postId, config)
+  return response.data
+}
+
+// Update post
+const updatePost = async (postId, postData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.put(API_URL + postId, postData, config)
   return response.data
 }
 
@@ -62,6 +74,7 @@ const getPostsByCategory = async (categoryName) => {
 const postService = {
   createPost,
   deletePost,
+  updatePost,
   getPosts,
   getPost,
   getAllPosts,

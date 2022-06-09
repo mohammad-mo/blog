@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { getPost, deletePost } from '../features/posts/postSlice'
+import { getPost, deletePost, updatePost } from '../features/posts/postSlice'
 
 // Components
 import Spinner from './Spinner'
@@ -23,6 +23,9 @@ const SinglePost = () => {
     (state) => state.posts,
   )
   const { user } = useSelector((state) => state.auth)
+  const [update, setUpdate] = useState(false)
+  const [title, setTitle] = useState(post.title || '')
+  const [description, setDescription] = useState(post.description || '')
 
   const dispatch = useDispatch()
 
@@ -34,10 +37,24 @@ const SinglePost = () => {
     dispatch(getPost(postId))
   }, [dispatch, isError, postId, message])
 
+  useEffect(() => {
+    setTitle(post.title)
+    setDescription(post.description)
+  }, [post.title, post.description])
+
   const onDeletePost = () => {
     dispatch(deletePost(postId))
     toast.success('Post deleted')
     navigate('/')
+  }
+
+  const onUpdatePost = () => {
+    const postData = { title, description }
+    const postIdAndData = { postId, postData }
+    dispatch(updatePost(postIdAndData))
+    toast.success('Post updated')
+    setUpdate(false)
+    navigate('/my-posts')
   }
 
   if (isLoading) {
@@ -66,12 +83,21 @@ const SinglePost = () => {
         )}
 
         <div className='flex justify-between items-center space-x-4 my-6'>
-          <h1 id='title' className='font-serif font-bold text-3xl'>
-            {post.title}
-          </h1>
+          {update ? (
+            <input
+              type='text'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
+            />
+          ) : (
+            <h1 id='title' className='font-serif font-bold text-3xl'>
+              {post.title}
+            </h1>
+          )}
           {post.user === user?._id ? (
             <div className='flex items-center space-x-2'>
-              <button>
+              <button onClick={() => setUpdate(!update)}>
                 <FaEdit
                   className='cursor-pointer'
                   color='#444'
@@ -104,9 +130,25 @@ const SinglePost = () => {
             </strong>
           </span>
         </div>
-        <p id='description' className='text-lg'>
-          {post.description}
-        </p>
+        {update ? (
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className='p-2 w-full rounded-md border border-gray-300 outline-gray-300'
+          ></textarea>
+        ) : (
+          <p id='description' className='text-lg'>
+            {post.description}
+          </p>
+        )}
+        {update && (
+          <button
+            onClick={onUpdatePost}
+            className='w-full text-gray-900 focus:outline-none bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition-all px-5 py-2.5 my-5'
+          >
+            Update
+          </button>
+        )}
       </div>
     </div>
   )
