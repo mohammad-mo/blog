@@ -24,7 +24,7 @@ const Sidebar = () => {
         className='flex flex-col items-center w-full my-2'
       >
         <span className='mb-2 font-bold'>CATEGORIES</span>
-        <ul className=' text-center grid grid-cols-fluid w-full'>
+        <ul className=' text-center grid grid-cols-category w-full'>
           {categories.map((category) => (
             <Link
               key={category.name}

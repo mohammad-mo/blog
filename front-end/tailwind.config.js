@@ -18,8 +18,8 @@ module.exports = {
         hero: 'url(/src/assets/hero.jpg)',
       },
       gridTemplateColumns: {
-        fluid: 'repeat(auto-fit, minmax(4rem, 1fr))',
-        posts: 'repeat(auto-fit, minmax(16rem, 1fr))',
+        category: 'repeat(auto-fit, minmax(4rem, 1fr))',
+        posts: 'repeat(auto-fill, minmax(16rem, 1fr))',
       },
       height: {
         '3lines': 'calc(3 * 1.25rem)',

@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
-import { FaMicroblog } from 'react-icons/fa'
+import { FaMicroblog, FaUserCircle } from 'react-icons/fa'
 
 // Components
 import Switcher from './Switecher'
@@ -58,7 +58,7 @@ const Navbar = () => {
       </div>
       <div className='flex justify-end items-center space-x-2 w-1/4 h-12'>
         <NavLink to={{ pathname: '/profile' }}>
-          <div className='bg-blue-400 w-8 h-8 rounded-full'></div>
+          <FaUserCircle size={'1.8rem'} />
         </NavLink>
         <Switcher />
       </div>
