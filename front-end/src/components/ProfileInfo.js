@@ -38,7 +38,6 @@ const ProfileInfo = () => {
     } else if (password.length < 8) {
       toast.error('Password length should be greater than 8')
     }
-    // setUpdate(false)
   }
 
   return (
@@ -48,14 +47,6 @@ const ProfileInfo = () => {
           <span className='text-2xl'>Update Your account</span>
         </div>
         <form>
-          <div id='formGroup' className='flex flex-col items-center my-10'>
-            <label className='text-2xl'>Profile Picture</label>
-            <div className='bg-blue-400 w-8 h-8 rounded-full my-2'></div>
-            <input
-              type='file'
-              className='w-full bg-gray-50 rounded-md border border-gray-300 cursor-pointer'
-            />
-          </div>
           <div id='formGroup' className='flex flex-col my-5'>
             <label htmlFor='name' className='mb-2 text-2xl'>
               Name
