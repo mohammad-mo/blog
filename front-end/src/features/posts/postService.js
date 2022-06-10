@@ -67,7 +67,7 @@ const getPostsByCategory = async (categoryName) => {
   const params = new URLSearchParams({
     category: categoryName,
   })
-  const response = await axios.get(`${API_URL}/all?${params}`)
+  const response = await axios.get(`${API_URL}all?${params}`)
   return response.data
 }
 
