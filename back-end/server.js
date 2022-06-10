@@ -36,6 +36,22 @@ app.post('/api/uploads', upload.single('file'), (req, res) => {
   res.status(200).json('File has been uploaded')
 })
 
+// Serve Frontend
+if (process.env.NODE_ENV === 'production') {
+  // Set build folder as static
+  app.use(express.static(path.join(__dirname, '../front-end/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(__dirname, '../', 'front-end', 'build', 'index.html'),
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.status(200).json({
+      message: 'Welcome to the supprt desk api.',
+    })
+  })
+}
+
 app.use(errorHandler)
 
 app.listen(PORT, () => {
