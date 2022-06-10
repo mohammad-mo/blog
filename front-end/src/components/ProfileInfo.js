@@ -30,7 +30,7 @@ const ProfileInfo = () => {
     }
     dispatch(updateUser({ name, email }))
     toast.success(
-      'Your information updated, to see the changes please logout/login',
+      'Your information has been updated, to see the changes please logout/login',
     )
     navigate('/')
   }

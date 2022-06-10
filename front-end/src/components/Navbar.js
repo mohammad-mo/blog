@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 
+// Icons
 import { FaMicroblog, FaUserCircle } from 'react-icons/fa'
 import { HiMenuAlt3 } from 'react-icons/hi'
 
@@ -29,13 +30,6 @@ const Navbar = () => {
       <div className='flex justify-start items-center space-x-1 md:w-1/4 h-14 text-xl dark:text-primary'>
         <p>Blog</p> <FaMicroblog />
       </div>
-      {/* <div className='flex items-center space-x-3 md:hidden'>
-        <HiMenuAlt3
-          onClick={() => setShowMenu(!showMenu)}
-          size={'1.8rem'}
-          className='cursor-pointer dark:text-primary'
-        />
-      </div> */}
 
       <div
         className={`w-full md:w-2/3 md:block bg-white dark:bg-primaryBlack dark:text-primary rounded-sm order-3 md:order-2 ${
@@ -74,6 +68,7 @@ const Navbar = () => {
           )}
         </ul>
       </div>
+
       <div className='flex justify-end items-center space-x-2 md:w-1/4 md:flex order-2 md:order-3'>
         <NavLink to={{ pathname: '/profile' }}>
           <FaUserCircle

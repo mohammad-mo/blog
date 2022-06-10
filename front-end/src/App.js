@@ -44,7 +44,7 @@ const App = () => {
           </Routes>
         </div>
       </Router>
-      <ToastContainer />
+      <ToastContainer toastClassName='bg-white dark:bg-primaryBlack dark:text-white dark:fill-white' />
     </>
   )
 }
