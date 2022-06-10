@@ -6,7 +6,7 @@ const Post = ({
   const PF = 'http://localhost:5000/images/'
 
   return (
-    <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-105 transition-all'>
+    <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-[1.02] transition-all'>
       {photo ? (
         <img
           src={PF + photo}
@@ -20,34 +20,36 @@ const Post = ({
           className='w-full h-64 object-cover rounded-md mb-2'
         />
       )}
-      <div className='flex flex-col p-1 my-2'>
-        <div className='flex justify-between items-center w-full font-serif text-sm font-bold mb-2'>
-          <span id='category' className='cursor-pointer'>
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </span>
-          <span id='date'>
-            {new Date(createdAt).toLocaleDateString('en-US')}
-          </span>
+      <div className='grid '>
+        <div className='flex flex-col p-1 my-2'>
+          <div className='flex justify-between items-center w-full font-serif text-sm font-bold mb-2'>
+            <span id='category' className='cursor-pointer'>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </span>
+            <span id='date'>
+              {new Date(createdAt).toLocaleDateString('en-US')}
+            </span>
+          </div>
+          <Link to={{ pathname: `/posts/${_id}` }}>
+            <h3 id='title' className='text-2xl'>
+              {title}
+            </h3>
+          </Link>
+          <p
+            className={`leading-5 overflow-hidden relative h-3lines after:content-[""] after:absolute after:bottom-0 after:right-0 after:h-[1.25rem] after:w-3/4 after:from-transparent after:to-primary dark:after:to-slate-800 after:bg-gradient-to-r`}
+          >
+            {description}
+          </p>
         </div>
         <Link to={{ pathname: `/posts/${_id}` }}>
-          <h3 id='title' className='text-2xl'>
-            {title}
-          </h3>
+          <button
+            type='button'
+            className='text-gray-900 bg-gray-100 border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-1 focus:ring-gray-200 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 transition-all'
+          >
+            Read More
+          </button>
         </Link>
-        <p
-          className={`leading-5 overflow-hidden relative h-3lines after:content-[""] after:absolute after:bottom-0 after:right-0 after:h-[1.25rem] after:w-3/4 after:from-transparent after:to-primary dark:after:to-slate-800 after:bg-gradient-to-r`}
-        >
-          {description}
-        </p>
       </div>
-      <Link to={{ pathname: `/posts/${_id}` }}>
-        <button
-          type='button'
-          className='text-gray-900 bg-gray-100 border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-1 focus:ring-gray-200 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 transition-all'
-        >
-          Read More
-        </button>
-      </Link>
     </div>
   )
 }
