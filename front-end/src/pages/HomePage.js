@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <div className='grid grid-cols-12 gap-2 mt-5 items-start'>
+      <div className='grid grid-cols-12 gap-3 mt-5 items-start'>
         <Posts />
         <Sidebar />
       </div>

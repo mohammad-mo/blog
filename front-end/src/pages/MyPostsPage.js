@@ -25,7 +25,7 @@ const MyPostsPage = () => {
   if (isLoading) return <Spinner />
 
   return (
-    <div className='grid grid-cols-posts gap-2 my-5'>
+    <div className='grid grid-cols-posts gap-3 my-5'>
       {posts.length === 0 ? (
         <p className='text-4xl my-4 dark:text-primary'>There are no posts</p>
       ) : (

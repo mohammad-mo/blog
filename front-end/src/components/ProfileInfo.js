@@ -5,10 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../features/auth/authSlice'
 
-// Icons
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
-
 import { toast } from 'react-toastify'
+import ButtonBlock from './ButtonBlock'
 
 const ProfileInfo = () => {
   const { user } = useSelector((state) => state.auth)
@@ -16,28 +14,25 @@ const ProfileInfo = () => {
 
   const [name, setName] = useState(user.name || '')
   const [email, setEmail] = useState(user.email || '')
-  const [password, setPassword] = useState(user.password || '')
-  const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigate()
 
   useEffect(() => {
     setName(user.name)
     setEmail(user.email)
-    setPassword('')
   }, [user.name, user.email])
 
   const onUpdateUser = (e) => {
     e.preventDefault()
-    if (user.name !== name || user.email !== email || password.length > 8) {
-      dispatch(updateUser({ name, email, password }))
-      toast.success(
-        'Your information updated, to see the changes please logout/login',
-      )
-      navigate('/')
-    } else if (password.length < 8) {
-      toast.error('Password length should be greater than 8')
+    if (user.name === name && user.email === email) {
+      toast.error("You didn't change anything")
+      return
     }
+    dispatch(updateUser({ name, email }))
+    toast.success(
+      'Your information updated, to see the changes please logout/login',
+    )
+    navigate('/')
   }
 
   return (
@@ -46,7 +41,7 @@ const ProfileInfo = () => {
         <div id='title' className='flex justify-start items-center'>
           <span className='text-2xl'>Update Your account</span>
         </div>
-        <form>
+        <form onSubmit={onUpdateUser}>
           <div id='formGroup' className='flex flex-col my-5'>
             <label htmlFor='name' className='mb-2 text-2xl'>
               Name
@@ -73,41 +68,7 @@ const ProfileInfo = () => {
               className='p-2 w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white'
             />
           </div>
-          <div id='formGroup' className='flex flex-col my-5'>
-            <label htmlFor='password' className='mb-2 text-2xl'>
-              Password
-            </label>
-            <div className='relative'>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder='Password'
-                id='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className='p-2 w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white'
-              />
-              {showPassword ? (
-                <FaEyeSlash
-                  onClick={() => setShowPassword(!showPassword)}
-                  className='absolute right-3 top-1/3 cursor-pointer text-gray-700 dark:fill-primary'
-                  size={'1.2rem'}
-                />
-              ) : (
-                <FaEye
-                  onClick={() => setShowPassword(!showPassword)}
-                  className='absolute right-3 top-1/3 cursor-pointer text-gray-700 dark:fill-primary'
-                  size={'1.2rem'}
-                />
-              )}
-            </div>
-          </div>
-          <button
-            type='submit'
-            onClick={onUpdateUser}
-            className='w-full text-gray-900 focus:outline-none bg-gray-100 rounded-md border border-gray-200 hover:bg-gray-200 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition-all px-5 py-2.5'
-          >
-            Update
-          </button>
+          <ButtonBlock type='submit'>Update</ButtonBlock>
         </form>
       </div>
     </div>

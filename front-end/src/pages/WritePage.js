@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 // Components
 import Spinner from '../components/Spinner'
 import axios from 'axios'
+import ButtonBlock from '../components/ButtonBlock'
 
 const WritePage = () => {
   const { isLoading, isError, isSuccess, message } = useSelector(
@@ -128,9 +129,7 @@ const WritePage = () => {
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </div>
-        <button className='w-full text-gray-900 focus:outline-none bg-gray-100 rounded-md border border-gray-200 hover:bg-gray-200 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition-all px-5 py-2.5'>
-          Publish
-        </button>
+        <ButtonBlock type='submit'>Publish</ButtonBlock>
       </form>
     </div>
   )

@@ -6,7 +6,7 @@ const Post = ({
   const PF = 'http://localhost:5000/images/'
 
   return (
-    <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary'>
+    <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-105 transition-all'>
       {photo ? (
         <img
           src={PF + photo}
@@ -29,11 +29,13 @@ const Post = ({
             {new Date(createdAt).toLocaleDateString('en-US')}
           </span>
         </div>
-        <h3 id='title' className='text-2xl'>
-          {title}
-        </h3>
+        <Link to={{ pathname: `/posts/${_id}` }}>
+          <h3 id='title' className='text-2xl'>
+            {title}
+          </h3>
+        </Link>
         <p
-          className={`leading-5  overflow-hidden relative h-3lines after:content-[""] after:absolute after:bottom-0 after:right-0 after:h-[1.25rem] after:w-3/4 after:from-transparent after:to-primary dark:after:to-slate-800 after:bg-gradient-to-r`}
+          className={`leading-5 overflow-hidden relative h-3lines after:content-[""] after:absolute after:bottom-0 after:right-0 after:h-[1.25rem] after:w-3/4 after:from-transparent after:to-primary dark:after:to-slate-800 after:bg-gradient-to-r`}
         >
           {description}
         </p>

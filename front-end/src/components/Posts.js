@@ -33,7 +33,7 @@ const Posts = () => {
   }
 
   return (
-    <div className='grid grid-cols-posts gap-2 col-span-full sm:col-span-9 order-1 sm:order-none'>
+    <div className='grid grid-cols-posts gap-3 col-span-full sm:col-span-9 order-1 sm:order-none'>
       {publicPosts.length === 0 ? (
         <p className='text-4xl my-4 dark:text-primary'>There are no posts</p>
       ) : (

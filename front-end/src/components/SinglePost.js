@@ -49,6 +49,11 @@ const SinglePost = () => {
   }
 
   const onUpdatePost = () => {
+    if (title === post.title && description === post.description) {
+      toast.error("You didn't change anything")
+      return
+    }
+
     const postData = { title, description }
     const postIdAndData = { postId, postData }
     dispatch(updatePost(postIdAndData))
@@ -118,7 +123,7 @@ const SinglePost = () => {
         </div>
         <div
           id='info'
-          className='flex justify-between items-center text-gray-500 dark:text-gray-300 my-6'
+          className='flex justify-between items-center text-gray-500 dark:text-gray-300 my-6 space-x-4'
         >
           <span>
             Author: <strong>{post.author}</strong>
@@ -143,8 +148,9 @@ const SinglePost = () => {
         )}
         {update && (
           <button
+            type='button'
             onClick={onUpdatePost}
-            className='w-full text-gray-900 focus:outline-none bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition-all px-5 py-2.5 my-5'
+            className='w-full text-gray-900 focus:outline-none bg-gray-100 rounded-md border border-gray-200 hover:bg-gray-200 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition-all px-5 py-2.5'
           >
             Update
           </button>
