@@ -29,7 +29,7 @@ const Sidebar = () => {
             <Link
               key={category.name}
               onClick={() => dispatch(getPostsByCategory(category.name))}
-              to={`/?category=${category.name}`}
+              to={`?category=${category.name}`}
             >
               <li className='cursor-pointer'>
                 {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
