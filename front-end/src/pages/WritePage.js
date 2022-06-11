@@ -50,7 +50,10 @@ const WritePage = () => {
       newPost.photo = fileName
 
       try {
-        await axios.post('api/uploads', data)
+        await axios.post(
+          'https://mern-blog-mohammad.herokuapp.com/api/uploads',
+          data,
+        )
       } catch (error) {
         throw new Error('Could not upload the file')
       }
