@@ -9,7 +9,9 @@ import { toast } from 'react-toastify'
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
+// Components
 import Spinner from '../components/Spinner'
+import ButtonSm from '../components/ButtonSm'
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -119,9 +121,7 @@ const LoginPage = () => {
       <span className='flex justify-center items-center space-x-3 my-5'>
         <p>Don't have an account?</p>
         <Link to={{ pathname: '/register' }}>
-          <button className='text-gray-900 bg-gray-100 border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg  px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>
-            Register here
-          </button>
+          <ButtonSm>Register here</ButtonSm>
         </Link>
       </span>
     </div>

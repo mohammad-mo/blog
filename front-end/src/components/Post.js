@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 
+// Components
+import ButtonSm from './ButtonSm'
+
 const Post = ({
   post: { category, _id, title, description, createdAt, photo },
 }) => {
@@ -42,12 +45,7 @@ const Post = ({
           </p>
         </div>
         <Link to={{ pathname: `/posts/${_id}` }}>
-          <button
-            type='button'
-            className='text-gray-900 bg-gray-100 border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-1 focus:ring-gray-200 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 transition-all'
-          >
-            Read More
-          </button>
+          <ButtonSm>Read More</ButtonSm>
         </Link>
       </div>
     </div>
