@@ -5,6 +5,7 @@ const { errorHandler } = require('./middlewares/errorMiddlerware')
 const connectDB = require('./config/db')
 const multer = require('multer')
 const path = require('path')
+const cors = require('cors')
 const PORT = process.env.PORT
 
 // Connect to database
@@ -12,6 +13,7 @@ connectDB()
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/images', express.static(path.join(__dirname, '/images')))
