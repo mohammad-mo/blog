@@ -78,7 +78,6 @@ const LoginPage = () => {
           <input
             type='text'
             placeholder='Name'
-            autoFocus={true}
             value={name}
             name='name'
             id='name'

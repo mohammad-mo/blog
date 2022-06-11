@@ -79,7 +79,6 @@ const WritePage = () => {
           <input
             type='text'
             placeholder='Title'
-            autoFocus={true}
             id='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
