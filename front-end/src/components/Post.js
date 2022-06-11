@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Post = ({
   post: { category, _id, title, description, createdAt, photo },
 }) => {
-  const PF = 'http://localhost:5000/images/'
+  const PF = 'https://mohammad-mern-blog.herokuapp.com/images/'
 
   return (
     <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-[1.02] transition-all'>
