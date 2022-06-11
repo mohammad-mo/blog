@@ -5,7 +5,7 @@ const { errorHandler } = require('./middlewares/errorMiddlerware')
 const connectDB = require('./config/db')
 const multer = require('multer')
 const path = require('path')
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT
 
 // Connect to database
 connectDB()
@@ -38,22 +38,21 @@ app.post('/api/uploads', upload.single('file'), (req, res) => {
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
-  // Set build folder as static
   app.use(express.static(path.join(__dirname, '../front-end/build')))
 
   app.get('*', (req, res) =>
-    res.sendFile(__dirname, '../', 'front-end', 'build', 'index.html'),
+    res.sendFile(path.resolve(__dirname, '../front-end/build', 'index.html')),
   )
 } else {
   app.get('/', (req, res) => {
     res.status(200).json({
-      message: 'Welcome to the supprt desk api.',
+      message: 'Welcome to the mern blog api.',
     })
   })
 }
 
 app.use(errorHandler)
 
-app.listen(PORT, () => {
+app.listen(PORT || 5000, () => {
   console.log(`Server started on port ${PORT}`.cyan.underline)
 })
