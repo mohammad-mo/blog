@@ -84,6 +84,7 @@ const WritePage = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className='p-2 w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white'
+            required
           />
         </div>
         <div id='formGroup' className='flex flex-col my-5'>
@@ -107,6 +108,7 @@ const WritePage = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className='bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            required
           >
             <option value='life'>Life</option>
             <option value='music'>Music</option>
@@ -127,6 +129,7 @@ const WritePage = () => {
             placeholder='Description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            required
           ></textarea>
         </div>
         <ButtonBlock type='submit'>Publish</ButtonBlock>
