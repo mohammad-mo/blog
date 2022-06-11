@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../features/auth/authSlice'
 
 import { toast } from 'react-toastify'
+
+// Components
 import ButtonBlock from './ButtonBlock'
 
 const ProfileInfo = () => {

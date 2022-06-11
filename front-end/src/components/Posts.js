@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllPosts, reset } from '../features/posts/postSlice'
 
 // Components
+// Compoenents
 import Post from './Post'
 import Spinner from './Spinner'
 
