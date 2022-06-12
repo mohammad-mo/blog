@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,7 +12,6 @@ import Spinner from './Spinner'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
 import { toast } from 'react-toastify'
-import ButtonSm from './ButtonSm'
 
 const SinglePost = () => {
   const { postId } = useParams()
