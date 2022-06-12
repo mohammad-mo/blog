@@ -75,7 +75,7 @@ const SinglePost = () => {
           <img
             src={post.photo}
             alt='post'
-            className='rounded-md w-full h-[400px] object-cover'
+            className='rounded-md w-full h-[500px] object-cover'
           />
         ) : (
           <img
