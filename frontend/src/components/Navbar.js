@@ -37,8 +37,8 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`w-full md:w-2/3 md:block bg-white dark:bg-primaryBlack dark:text-primary rounded-sm order-3 md:order-2 ${
-          showMenu ? '' : 'hidden'
+        className={`w-full md:w-2/3 md:max-h-screen md:opacity-100 bg-white overflow-hidden dark:bg-primaryBlack dark:text-primary rounded-sm order-3 md:order-2 transition-all duration-300 ${
+          showMenu ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <ul
