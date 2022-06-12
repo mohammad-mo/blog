@@ -1,7 +1,7 @@
 const express = require('express')
 const colors = require('colors')
 const dotenv = require('dotenv').config()
-const { errorHandler } = require('./middlewares/errorMiddlerware')
+const { errorHandler } = require('./middlewares/error')
 const connectDB = require('./config/db')
 const path = require('path')
 const cors = require('cors')

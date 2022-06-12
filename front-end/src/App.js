@@ -8,15 +8,15 @@ import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
 
 // Pages
-import HomePage from './pages/HomePage'
-import PostPage from './pages/PostPage'
-import WritePage from './pages/WritePage'
-import ProfilePage from './pages/ProfilePage'
-import NotFoundPage from './pages/NotFoundPage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import MyPostsPage from './pages/MyPostsPage'
-import AboutPage from './pages/AboutPage'
+import HomePage from './pages/Home'
+import PostPage from './pages/Post'
+import WritePage from './pages/Write'
+import ProfilePage from './pages/Profile'
+import NotFoundPage from './pages/NotFound'
+import LoginPage from './pages/Login'
+import RegisterPage from './pages/Register'
+import MyPostsPage from './pages/MyPosts'
+import AboutPage from './pages/About'
 
 const App = () => {
   return (

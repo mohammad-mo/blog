@@ -1,8 +1,8 @@
 const asyncHandler = require('express-async-handler')
 const { cloudinary } = require('../utils/cloudinary')
 
-const User = require('../models/userModel')
-const Post = require('../models/postModel')
+const User = require('../models/user')
+const Post = require('../models/post')
 
 /**
  *

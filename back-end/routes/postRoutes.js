@@ -7,9 +7,9 @@ const {
   getAllPosts,
   deletePost,
   updatePost,
-} = require('../controllers/postController')
+} = require('../controllers/post')
 
-const { protect } = require('../middlewares/authMiddleware')
+const { protect } = require('../middlewares/auth')
 
 router.route('/').get(protect, getPosts).post(protect, createPosts)
 router.route('/all').get(getAllPosts)
