@@ -7,6 +7,7 @@ import { getPosts, reset } from '../features/posts/postSlice'
 // Components
 import Post from '../components/Post'
 import Spinner from '../components/Spinner'
+import AnimationContainer from '../components/AnimationContainer'
 
 const MyPostsPage = () => {
   const { posts, isLoading, isSuccess } = useSelector((state) => state.posts)
@@ -25,13 +26,15 @@ const MyPostsPage = () => {
   if (isLoading) return <Spinner />
 
   return (
-    <div className='grid grid-cols-posts gap-3 my-5'>
-      {posts.length === 0 ? (
-        <p className='text-4xl my-4 dark:text-primary'>There are no posts</p>
-      ) : (
-        posts.map((post) => <Post key={post._id} post={post} />)
-      )}
-    </div>
+    <AnimationContainer>
+      <div className='grid grid-cols-posts gap-3 my-5'>
+        {posts.length === 0 ? (
+          <p className='text-4xl my-4 dark:text-primary'>There are no posts</p>
+        ) : (
+          posts.map((post) => <Post key={post._id} post={post} />)
+        )}
+      </div>
+    </AnimationContainer>
   )
 }
 

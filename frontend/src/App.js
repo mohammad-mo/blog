@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -18,13 +18,18 @@ import RegisterPage from './pages/Register'
 import MyPostsPage from './pages/MyPosts'
 import AboutPage from './pages/About'
 
+// Animation
+import { AnimatePresence } from 'framer-motion'
+
 const App = () => {
+  const location = useLocation()
+
   return (
     <>
-      <Router>
-        <div className='container mx-auto px-4 pb-5 min-h-screen'>
-          <Navbar />
-          <Routes>
+      <div className='container mx-auto px-4 pb-5 min-h-screen'>
+        <Navbar />
+        <AnimatePresence exitBeforeEnter>
+          <Routes location={location} key={location.pathname}>
             <Route path='/' element={<HomePage />} />
             <Route path='/posts/:postId' element={<PostPage />} />
             <Route path='/login' element={<LoginPage />} />
@@ -42,8 +47,8 @@ const App = () => {
               <Route path='/profile' element={<ProfilePage />} />
             </Route>
           </Routes>
-        </div>
-      </Router>
+        </AnimatePresence>
+      </div>
       <ToastContainer toastClassName='bg-white dark:bg-primaryBlack dark:text-white dark:fill-white' />
     </>
   )

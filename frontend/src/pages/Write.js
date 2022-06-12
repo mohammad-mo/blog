@@ -11,6 +11,10 @@ import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
 import ButtonBlock from '../components/ButtonBlock'
 
+// Animations
+import { motion } from 'framer-motion'
+import { pageAnimation } from '../animation'
+
 const WritePage = () => {
   const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.posts,
@@ -63,7 +67,13 @@ const WritePage = () => {
   if (isLoading) return <Spinner />
 
   return (
-    <div className='mx-auto my-5 dark:text-primary'>
+    <motion.div
+      variants={pageAnimation}
+      initial='hidden'
+      animate='show'
+      exit='exit'
+      className='mx-auto my-5 dark:text-primary'
+    >
       <form onSubmit={onSubmit}>
         {file && (
           <img
@@ -141,7 +151,7 @@ const WritePage = () => {
         </div>
         <ButtonBlock type='submit'>Publish</ButtonBlock>
       </form>
-    </div>
+    </motion.div>
   )
 }
 

@@ -1,11 +1,14 @@
 // Components
 import ProfileInfo from '../components/ProfileInfo'
+import AnimationContainer from '../components/AnimationContainer'
 
 const ProfilePage = () => {
   return (
-    <div className='my-5'>
-      <ProfileInfo />
-    </div>
+    <AnimationContainer>
+      <div className='my-5'>
+        <ProfileInfo />
+      </div>
+    </AnimationContainer>
   )
 }
 

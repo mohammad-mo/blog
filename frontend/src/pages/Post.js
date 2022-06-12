@@ -1,11 +1,14 @@
 // Components
 import SinglePost from '../components/SinglePost'
+import AnimationContainer from '../components/AnimationContainer'
 
 const PostPage = () => {
   return (
-    <div className='my-5'>
-      <SinglePost />
-    </div>
+    <AnimationContainer>
+      <div className='my-5'>
+        <SinglePost />
+      </div>
+    </AnimationContainer>
   )
 }
 
