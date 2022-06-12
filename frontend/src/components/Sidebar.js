@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // Redux
 import { useDispatch } from 'react-redux'
 import { getPostsByCategory } from '../features/posts/postSlice'
 
 const Sidebar = () => {
+  const categoryName = useLocation().search.split('=')[1]
   const dispatch = useDispatch()
 
   const categories = [
@@ -24,14 +25,18 @@ const Sidebar = () => {
         className='flex flex-col items-center w-full my-2'
       >
         <span className='mb-2 font-bold'>CATEGORIES</span>
-        <ul className=' text-center grid grid-cols-category w-full'>
+        <ul className='text-center grid grid-cols-category w-full'>
           {categories.map((category) => (
             <Link
               key={category.name}
               onClick={() => dispatch(getPostsByCategory(category.name))}
               to={`?category=${category.name}`}
             >
-              <li className='cursor-pointer'>
+              <li
+                className={`cursor-pointer ${
+                  category.name === categoryName ? 'text-red-500' : ''
+                } hover:text-red-500 transition-all`}
+              >
                 {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
               </li>
             </Link>

@@ -37,5 +37,12 @@ input[type='file']::file-selector-button {
 
 /* Navigation */
 #nav-links > li a.active {
-  color: tomato;
+  color: rgb(239 68 68);
+}
+
+#nav-links > li:hover {
+  color: rgb(239 68 68);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }

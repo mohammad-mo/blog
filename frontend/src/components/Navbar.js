@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,10 +15,15 @@ import Switcher from './Switecher'
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
 
+  const { pathname } = useLocation()
   const navigate = useNavigate()
 
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    setShowMenu(false)
+  }, [pathname])
 
   const onLogout = () => {
     dispatch(logout())
@@ -38,7 +43,7 @@ const Navbar = () => {
       >
         <ul
           id='nav-links'
-          className='flex flex-col md:flex-row justify-between items-center px-2 text-lg md:text-base font-light py-5 md:py-0'
+          className='flex flex-col md:flex-row justify-between items-center px-2 text-lg md:text-base font-light py-5 md:py-0 transition-all'
         >
           <li className='cursor-pointer'>
             <NavLink to={{ pathname: '/' }}>HOME</NavLink>
