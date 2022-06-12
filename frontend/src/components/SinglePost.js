@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,6 +12,7 @@ import Spinner from './Spinner'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
 import { toast } from 'react-toastify'
+import ButtonSm from './ButtonSm'
 
 const SinglePost = () => {
   const { postId } = useParams()
@@ -70,6 +71,12 @@ const SinglePost = () => {
 
   return (
     <div className='bg-primary border border-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-primary rounded-md p-5'>
+      <button
+        onClick={() => navigate(-1)}
+        className='text-gray-900 bg-gray-100 border border-gray-300 focus:outline-none hover:bg-gray-200 font-medium rounded-md transition-all px-6 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+      >
+        Back
+      </button>
       <div>
         {post.photo ? (
           <img
