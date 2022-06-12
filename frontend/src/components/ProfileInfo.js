@@ -14,15 +14,15 @@ const ProfileInfo = () => {
   const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-  const [name, setName] = useState(user.name || '')
-  const [email, setEmail] = useState(user.email || '')
+  const [name, setName] = useState(user?.name || '')
+  const [email, setEmail] = useState(user?.email || '')
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    setName(user.name)
-    setEmail(user.email)
-  }, [user.name, user.email])
+    setName(user?.name)
+    setEmail(user?.email)
+  }, [user?.name, user?.email])
 
   const onUpdateUser = (e) => {
     e.preventDefault()
