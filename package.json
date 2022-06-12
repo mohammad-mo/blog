@@ -4,12 +4,12 @@
   "description": "Blog app",
   "main": "server.js",
   "scripts": {
-    "build": "cd front-end && npm run build",
-    "install-client": "cd front-end && npm install",
+    "build": "cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "node back-end/server.js",
-    "server": "nodemon back-end/server.js",
-    "client": "npm run start --prefix front-end",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm run start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Mohammad Mo",
