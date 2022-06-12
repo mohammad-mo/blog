@@ -3,7 +3,6 @@ const colors = require('colors')
 const dotenv = require('dotenv').config()
 const { errorHandler } = require('./middlewares/errorMiddlerware')
 const connectDB = require('./config/db')
-const multer = require('multer')
 const path = require('path')
 const cors = require('cors')
 const PORT = process.env.PORT
@@ -14,29 +13,13 @@ connectDB()
 const app = express()
 
 app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use('/images', express.static(path.join(__dirname, '/images')))
+app.use(express.json({ limit: '5mb' }))
+app.use(express.urlencoded({ limit: '5mb', extended: true }))
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/posts', require('./routes/postRoutes'))
 app.use('/api/category', require('./routes/categoryRoutes'))
-
-// Storing image
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './back-end/images')
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name)
-  },
-})
-
-const upload = multer({ storage })
-app.post('/api/uploads', upload.single('file'), (req, res) => {
-  res.status(200).json('File has been uploaded')
-})
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {

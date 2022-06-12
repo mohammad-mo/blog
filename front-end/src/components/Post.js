@@ -6,13 +6,11 @@ import ButtonSm from './ButtonSm'
 const Post = ({
   post: { category, _id, title, description, createdAt, photo },
 }) => {
-  const PF = 'https://mern-blog-mohammad.herokuapp.com/images/'
-
   return (
     <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-[1.02] transition-all'>
       {photo ? (
         <img
-          src={PF + photo}
+          src={photo}
           alt='post'
           className='w-full h-64 object-cover rounded-md mb-2'
         />

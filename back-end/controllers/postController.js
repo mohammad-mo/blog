@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler')
+const { cloudinary } = require('../utils/cloudinary')
 
 const User = require('../models/userModel')
 const Post = require('../models/postModel')
@@ -71,7 +72,9 @@ const getPost = asyncHandler(async (req, res) => {
  * @access Private
  */
 const createPosts = asyncHandler(async (req, res) => {
-  const { title, description, photo, category } = req.body
+  const {
+    body: { title, description, category, fileBase64 },
+  } = req
 
   if (!title || !description || !category) {
     res.status(400)
@@ -86,10 +89,18 @@ const createPosts = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 
+  let uploadResponse
+
+  if (fileBase64) {
+    uploadResponse = await cloudinary.uploader.upload(fileBase64, {
+      upload_preset: 'blog',
+    })
+  }
+
   const posts = await Post.create({
     title,
     description,
-    photo,
+    photo: uploadResponse ? uploadResponse.url : '',
     category,
     user: req.user.id,
     author: req.user.name,

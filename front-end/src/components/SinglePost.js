@@ -14,8 +14,6 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 const SinglePost = () => {
-  const PF = 'https://mern-blog-mohammad.herokuapp.com/images/'
-
   const { postId } = useParams()
   const navigate = useNavigate()
 
@@ -75,7 +73,7 @@ const SinglePost = () => {
       <div>
         {post.photo ? (
           <img
-            src={PF + post.photo}
+            src={post.photo}
             alt='post'
             className='rounded-md w-full h-[400px] object-cover'
           />

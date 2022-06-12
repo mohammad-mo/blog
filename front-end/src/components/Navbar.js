@@ -38,7 +38,7 @@ const Navbar = () => {
       >
         <ul
           id='nav-links'
-          className='flex flex-col md:flex-row justify-between items-center px-2 font-light py-5 md:py-0'
+          className='flex flex-col md:flex-row justify-between items-center px-2 text-lg md:text-base font-light py-5 md:py-0'
         >
           <li className='cursor-pointer'>
             <NavLink to={{ pathname: '/' }}>HOME</NavLink>

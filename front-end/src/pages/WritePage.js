@@ -9,7 +9,6 @@ import { toast } from 'react-toastify'
 
 // Components
 import Spinner from '../components/Spinner'
-import axios from 'axios'
 import ButtonBlock from '../components/ButtonBlock'
 
 const WritePage = () => {
@@ -20,7 +19,8 @@ const WritePage = () => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('life')
   const [description, setDescription] = useState('')
-  const [file, setFile] = useState(null)
+  const [file] = useState('')
+  const [previewSource, setPreviewSource] = useState('')
 
   const dispatch = useDispatch()
 
@@ -39,25 +39,22 @@ const WritePage = () => {
     dispatch(reset())
   }, [dispatch, isError, isSuccess, navigate, message])
 
+  const previewFile = (file) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      setPreviewSource(reader.result)
+    }
+  }
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0]
+    previewFile(file)
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault()
-    const newPost = { title, category, description }
-    if (file) {
-      const data = new FormData()
-      const fileName = Date.now() + file.name
-      data.append('name', fileName)
-      data.append('file', file)
-      newPost.photo = fileName
-
-      try {
-        await axios.post(
-          'https://mern-blog-mohammad.herokuapp.com/api/uploads',
-          data,
-        )
-      } catch (error) {
-        throw new Error('Could not upload the file')
-      }
-    }
+    const newPost = { title, category, description, fileBase64: previewSource }
 
     dispatch(createPost(newPost))
     toast.success('Your post created successfully')
@@ -71,6 +68,13 @@ const WritePage = () => {
         {file && (
           <img
             src={URL.createObjectURL(file)}
+            alt={title}
+            className='rounded-md w-full h-[500px] object-cover'
+          />
+        )}
+        {previewSource && (
+          <img
+            src={previewSource}
             alt={title}
             className='rounded-md w-full h-[500px] object-cover'
           />
@@ -96,9 +100,10 @@ const WritePage = () => {
           <input
             className='w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white cursor-pointer'
             id='file'
+            name='file'
             type='file'
             accept='image/jpeg, image/png, image/webp'
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={handleFileInputChange}
           />
         </div>
         <div id='formGroup' className='flex flex-col my-5'>
