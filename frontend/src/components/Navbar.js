@@ -19,6 +19,7 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   const { user } = useSelector((state) => state.auth)
+  const { isLoading } = useSelector((state) => state.posts)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,7 +32,11 @@ const Navbar = () => {
     navigate('/')
   }
   return (
-    <div className='w-full h-14 sticky top-0 flex justify-between items-center flex-wrap order-1 md:flex-nowrap bg-white dark:bg-primaryBlack z-30'>
+    <div
+      className={`w-full h-14 sticky top-0 flex justify-between items-center flex-wrap order-1 md:flex-nowrap bg-white dark:bg-primaryBlack ${
+        isLoading ? 'z-0' : 'z-30'
+      }`}
+    >
       <div className='flex justify-start items-center space-x-1 md:w-1/4 h-14 text-xl dark:text-primary'>
         <p>Blog</p> <FaMicroblog />
       </div>
