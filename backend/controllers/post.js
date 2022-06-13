@@ -100,7 +100,7 @@ const createPosts = asyncHandler(async (req, res) => {
   const posts = await Post.create({
     title,
     description,
-    photo: uploadResponse ? uploadResponse.url : '',
+    photo: uploadResponse ? uploadResponse.secure_url : '',
     category,
     user: req.user.id,
     author: req.user.name,
