@@ -1,6 +1,7 @@
 # MERN BLOG
 
 This is a full-stack blog built with MERN stack.
+[Demo](https://mern-blog-mohammad.herokuapp.com/)
 
 ## Setup
 
