@@ -21,7 +21,7 @@ npm run build
 ## Tools
 
 | Front-end              | Back-end   |
-| ---------------------- | ---------- |
+| :--------------------- | :--------- |
 | react                  | bcryptjs   |
 | react-router-dom       | cloudinary |
 | react-toastify         | cors       |
@@ -40,7 +40,7 @@ Base URL: https://mern-blog-mohammad.herokuapp.com/
 ### Users
 
 | Routes               | Description     | Method |
-| -------------------- | --------------- | ------ |
+| :------------------- | :-------------- | :----- |
 | /api/users/          | Register a user | POST   |
 | /api/users/login     | Login           | POST   |
 | /api/users/login/:id | Update user     | PUT    |
@@ -49,7 +49,7 @@ Base URL: https://mern-blog-mohammad.herokuapp.com/
 ### Posts
 
 | Routes         | Description      | Method |
-| -------------- | ---------------- | ------ |
+| :------------- | :--------------- | :----- |
 | /api/posts/    | Get user posts   | GET    |
 | /api/posts/    | Create post      | POST   |
 | /api/posts/all | Get all posts    | POST   |
@@ -60,6 +60,6 @@ Base URL: https://mern-blog-mohammad.herokuapp.com/
 ### Category
 
 | Routes         | Description     | Method |
-| -------------- | --------------- | ------ |
+| :------------- | :-------------- | :----- |
 | /api/category/ | Get category    | GET    |
 | /api/category/ | Create category | POST   |
