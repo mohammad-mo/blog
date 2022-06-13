@@ -52,7 +52,7 @@ Base URL: https://mern-blog-mohammad.herokuapp.com/
 | :------------- | :--------------- | :----- |
 | /api/posts/    | Get user posts   | GET    |
 | /api/posts/    | Create post      | POST   |
-| /api/posts/all | Get all posts    | POST   |
+| /api/posts/all | Get all posts    | GET   |
 | /api/posts/:id | Get user post    | GET    |
 | /api/posts/:id | Delete user post | DELETE |
 | /api/posts/:id | Update user post | PUT    |
