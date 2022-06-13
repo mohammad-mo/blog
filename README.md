@@ -29,7 +29,7 @@ npm run build
 | react-toggle-dark-mode | express    |
 | redux-toolkit          | mongoose   |
 | react-redux            | nodemon    |
-| axios                  |            |
+| axios                  | mongodb    |
 
 - Using cloudinary for storing images.
 
