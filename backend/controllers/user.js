@@ -109,7 +109,7 @@ const updateUser = asyncHandler(async (req, res) => {
 /**
  *
  * @descriptions Get current user
- * @route /api/me
+ * @route GET /api/me
  * @access Private
  */
 const getMe = asyncHandler(async (req, res) => {
