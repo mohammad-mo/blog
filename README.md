@@ -9,14 +9,11 @@ Download [Node.js](https://nodejs.org/en/download/).
 Run the following commands:
 
 ```bash
-# Install dependencies (only the first time)
+# Install dependencies (also install dependencies in frontend folder)
 npm install
 
-# Run the local server at localhost:8080
+# Run the local server
 npm run dev
-
-# Build for production in the dist/ directory
-npm run build
 ```
 
 ## Tools
