@@ -79,7 +79,7 @@ const SinglePost = () => {
       </button>
       <div>
         {post.photo ? (
-          <Image publicId={post.photo.public_id}>
+          <Image cloudName='deigjsdac' publicId={post.photo.public_id}>
             <Transformation crop='scale' width='300' />
           </Image>
         ) : (

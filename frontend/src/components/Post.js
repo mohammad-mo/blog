@@ -10,7 +10,7 @@ const Post = ({
   return (
     <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-[1.02] transition-all'>
       {photo ? (
-        <Image publicId={photo.public_id}>
+        <Image cloudName='deigjsdac' publicId={photo.public_id}>
           <Transformation crop='scale' width='300' />
         </Image>
       ) : (
