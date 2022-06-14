@@ -96,11 +96,14 @@ const createPosts = asyncHandler(async (req, res) => {
       upload_preset: 'blog',
     })
   }
+  const format = uploadResponse.format
+  const public_id = uploadResponse.public_id
+  const data = { format, public_id }
 
   const posts = await Post.create({
     title,
     description,
-    photo: uploadResponse ? uploadResponse.secure_url : '',
+    photo: uploadResponse ? data : '',
     category,
     user: req.user.id,
     author: req.user.name,

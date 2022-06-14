@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Image, Transformation } from 'cloudinary-react'
 
 // Components
 import ButtonSm from './ButtonSm'
@@ -9,11 +10,9 @@ const Post = ({
   return (
     <div className='bg-primary border border-gray-100 p-2 rounded-md shadow dark:bg-gray-800 dark:border-gray-700 dark:text-primary hover:scale-[1.02] transition-all'>
       {photo ? (
-        <img
-          src={photo}
-          alt='post'
-          className='w-full h-64 object-cover rounded-md mb-2'
-        />
+        <Image publicId={photo.public_id}>
+          <Transformation crop='scale' width='300' />
+        </Image>
       ) : (
         <img
           src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
