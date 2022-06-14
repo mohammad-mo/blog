@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Image, Transformation } from 'cloudinary-react'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -79,9 +78,11 @@ const SinglePost = () => {
       </button>
       <div>
         {post.photo ? (
-          <Image cloudName='deigjsdac' publicId={post.photo.public_id}>
-            <Transformation crop='scale' width='300' />
-          </Image>
+          <img
+            src={post.photo}
+            alt='post'
+            className='rounded-md w-full h-[500px] object-cover'
+          />
         ) : (
           <img
             src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
