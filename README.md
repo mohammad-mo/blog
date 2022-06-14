@@ -43,7 +43,7 @@ Base URL: https://mern-blog-mohammad.herokuapp.com/
 | /api/users/          | Register a user | POST   |
 | /api/users/login     | Login           | POST   |
 | /api/users/login/:id | Update user     | PUT    |
-| /api/users/me        | get user        | GET    |
+| /api/users/me        | Get user        | GET    |
 
 ### Posts
 
