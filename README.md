@@ -28,6 +28,7 @@ npm run dev
 | redux-toolkit          | mongoose   |
 | react-redux            | nodemon    |
 | axios                  | mongodb    |
+| framer-motion          | node.js    |
 
 - Using cloudinary for storing images.
 
