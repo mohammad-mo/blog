@@ -66,6 +66,7 @@ const LoginPage = () => {
       }
 
       dispatch(register(userData))
+      toast.success('Welcome')
     }
   }
 

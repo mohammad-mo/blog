@@ -105,7 +105,7 @@ const WritePage = () => {
         </div>
         <div id='formGroup' className='flex flex-col my-5'>
           <label htmlFor='file' className='mb-2 text-2xl'>
-            Upload Image
+            Upload Image (Optional)
           </label>
           <input
             className='w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white cursor-pointer'

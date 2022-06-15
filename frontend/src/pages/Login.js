@@ -59,6 +59,7 @@ const LoginPage = () => {
     }
 
     dispatch(login(userData))
+    toast.success('Welcome Back')
   }
 
   if (isLoading) return <Spinner />
