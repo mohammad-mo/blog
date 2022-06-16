@@ -108,7 +108,7 @@ const WritePage = () => {
             Upload Image (Optional)
           </label>
           <input
-            className='w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white cursor-pointer'
+            className='w-full rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white cursor-pointer file:bg-gray-300 file:border-none file:rounded-md file:px-3 file:py-2 file:mr-3 file:cursor-pointer'
             id='file'
             name='file'
             type='file'

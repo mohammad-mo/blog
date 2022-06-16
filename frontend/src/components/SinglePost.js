@@ -87,7 +87,7 @@ const SinglePost = () => {
           <img
             src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
             alt='post'
-            className='rounded-md w-full h-[400px] object-cover'
+            className='rounded-md w-full h-[500px] object-cover'
           />
         )}
 
@@ -146,7 +146,7 @@ const SinglePost = () => {
             className='p-2 w-full h-32 rounded-md border border-gray-300 outline-gray-300 bg-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-white'
           ></textarea>
         ) : (
-          <p id='description' className='text-lg'>
+          <p id='description' className='text-lg first-letter:text-4xl'>
             {post.description}
           </p>
         )}
