@@ -3,7 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { getPost, deletePost, updatePost } from '../features/posts/postSlice'
+import {
+  getPost,
+  deletePost,
+  updatePost,
+  reset,
+} from '../features/posts/postSlice'
 
 // Components
 import Spinner from './Spinner'
@@ -17,7 +22,7 @@ const SinglePost = () => {
   const { postId } = useParams()
   const navigate = useNavigate()
 
-  const { post, isLoading, isError, message } = useSelector(
+  const { post, isLoading, isSuccess, message } = useSelector(
     (state) => state.posts,
   )
   const { user } = useSelector((state) => state.auth)
@@ -28,12 +33,14 @@ const SinglePost = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (isError) {
-      toast.error(message)
-    }
-
     dispatch(getPost(postId))
-  }, [dispatch, isError, postId, message])
+
+    return () => {
+      if (isSuccess) {
+        dispatch(reset())
+      }
+    }
+  }, [dispatch, postId, isSuccess, message])
 
   useEffect(() => {
     setTitle(post.title)
