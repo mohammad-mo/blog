@@ -17,6 +17,7 @@ import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
 import MyPostsPage from './pages/MyPosts'
 import AboutPage from './pages/About'
+import ScrollToTopWrapper from './components/ScrollToTopWrapper'
 
 // Animation
 import { AnimatePresence } from 'framer-motion'
@@ -29,24 +30,26 @@ const App = () => {
       <div className='container mx-auto px-4 pb-5 min-h-screen'>
         <Navbar />
         <AnimatePresence exitBeforeEnter>
-          <Routes location={location} key={location.pathname}>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/posts/:postId' element={<PostPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/about' element={<AboutPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/notfound' element={<NotFoundPage />} />
-            <Route path='/*' element={<NotFoundPage />} />
-            <Route path='/write' element={<PrivateRoute />}>
-              <Route path='/write' element={<WritePage />} />
-            </Route>
-            <Route path='/my-posts' element={<PrivateRoute />}>
-              <Route path='/my-posts' element={<MyPostsPage />} />
-            </Route>
-            <Route path='/profile' element={<PrivateRoute />}>
-              <Route path='/profile' element={<ProfilePage />} />
-            </Route>
-          </Routes>
+          <ScrollToTopWrapper>
+            <Routes location={location} key={location.pathname}>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/posts/:postId' element={<PostPage />} />
+              <Route path='/login' element={<LoginPage />} />
+              <Route path='/about' element={<AboutPage />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/notfound' element={<NotFoundPage />} />
+              <Route path='/*' element={<NotFoundPage />} />
+              <Route path='/write' element={<PrivateRoute />}>
+                <Route path='/write' element={<WritePage />} />
+              </Route>
+              <Route path='/my-posts' element={<PrivateRoute />}>
+                <Route path='/my-posts' element={<MyPostsPage />} />
+              </Route>
+              <Route path='/profile' element={<PrivateRoute />}>
+                <Route path='/profile' element={<ProfilePage />} />
+              </Route>
+            </Routes>
+          </ScrollToTopWrapper>
         </AnimatePresence>
       </div>
       <ToastContainer toastClassName='bg-white dark:bg-primaryBlack dark:text-white dark:fill-white' />
