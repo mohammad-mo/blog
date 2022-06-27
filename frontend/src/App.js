@@ -18,6 +18,7 @@ import RegisterPage from './pages/Register'
 import MyPostsPage from './pages/MyPosts'
 import AboutPage from './pages/About'
 import ScrollToTopWrapper from './components/ScrollToTopWrapper'
+import BackToTop from './components/BackToTop'
 
 // Animation
 import { AnimatePresence } from 'framer-motion'
@@ -49,6 +50,7 @@ const App = () => {
                 <Route path='/profile' element={<ProfilePage />} />
               </Route>
             </Routes>
+            <BackToTop />
           </ScrollToTopWrapper>
         </AnimatePresence>
       </div>
