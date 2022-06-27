@@ -37,9 +37,12 @@ const Navbar = () => {
         isLoading ? 'z-0' : 'z-30'
       }`}
     >
-      <div className='flex justify-start items-center space-x-1 md:w-1/4 h-14 text-xl dark:text-primary'>
+      <button
+        className='flex justify-start items-center space-x-1 md:w-1/4 h-14 text-xl dark:text-primary'
+        onClick={() => navigate('/')}
+      >
         <p>Blog</p> <FaMicroblog />
-      </div>
+      </button>
 
       <div
         className={`w-full md:w-2/3 md:max-h-screen md:opacity-100 bg-white overflow-hidden dark:bg-primaryBlack dark:text-primary rounded-sm order-3 md:order-2 transition-all duration-300 ${
