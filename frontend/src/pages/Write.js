@@ -23,7 +23,6 @@ const WritePage = () => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('life')
   const [description, setDescription] = useState('')
-  const [file] = useState('')
   const [previewSource, setPreviewSource] = useState('')
 
   const dispatch = useDispatch()
@@ -75,13 +74,6 @@ const WritePage = () => {
       className='mx-auto my-5 dark:text-primary'
     >
       <form onSubmit={onSubmit}>
-        {file && (
-          <img
-            src={URL.createObjectURL(file)}
-            alt={title}
-            className='rounded-md w-full h-[500px] object-cover'
-          />
-        )}
         {previewSource && (
           <img
             src={previewSource}
